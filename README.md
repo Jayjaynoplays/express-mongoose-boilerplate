@@ -1,4 +1,4 @@
-# THIS IS API FOR DSC BLOG
+# THIS IS TEMPLATE RESTFUL API FOR MONGOOSE
 
 ## Setup
 ### Environment
@@ -12,7 +12,7 @@ $ cp .env.example ./.env
 ### Setup Docker
 - Configure postgres database variable in docker-compose.yml file
 - Configure DATABASE_URL in env file. 
-- In this case: DATABASE_URL=postgres://postgres:postgres@db:5432/blog
+- In this case: DATABASE_URL=mongodb://username:password@host:port/database?options
 - Set NODE_ENV in .env file
 - Build and run container
 ```bash
@@ -47,18 +47,3 @@ $ yarn dev
 ```bash
 $ yarn run build && yarn start
 ```
-
-## View PSQL Database
-- Access db environment
-```bash
-$ docker container exec -it blog-be_db_1 bash
-```
-- Login account
-```bash
-$ psql -U postgres
-```
-- Command 
-- \l : list databases
-- \c [database name] : connect to database 
-- \dt : list tables
-- user SQL command to query data such as ' SELECT * FROM users;'

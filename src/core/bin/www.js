@@ -9,7 +9,7 @@ import debug from 'debug';
 import http from 'http';
 import app from '../index';
 import { PORT } from '../env';
-import {logger} from "../modules/logger/winston";
+import { logger } from '../modules/logger/winston';
 
 const dubugHelper = debug('mongoose:server');
 

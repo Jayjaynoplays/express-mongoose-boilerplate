@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import { AppBundle } from './config';
+import { ModuleResolver } from './api';
 
 const app = express();
 
@@ -8,6 +9,7 @@ const app = express();
     await AppBundle.builder()
         .applyAppContext(app)
         .init()
+        .applyResolver(ModuleResolver)
         .run();
 })();
 

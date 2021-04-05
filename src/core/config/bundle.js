@@ -3,6 +3,7 @@ import * as express from 'express';
 import methodOverride from 'method-override';
 import cors from 'cors';
 import { logger } from '../modules/logger/winston';
+import { DatabaseInstance } from './database';
 
 export class AppBundle {
     static logger = logger;
@@ -17,6 +18,14 @@ export class AppBundle {
      */
     applyAppContext(app) {
         this.app = app;
+        return this;
+    }
+
+    /**
+     * @param {import('../../packages/handler/HandlerResolver')} resolver
+     */
+    applyResolver(resolver) {
+        this.app.use(resolver);
         return this;
     }
 
@@ -57,5 +66,6 @@ export class AppBundle {
      */
     async run() {
         AppBundle.logger.info('🌶🌶🌶 Building asynchronous config 🌶🌶🌶');
+        await DatabaseInstance.connect();
     }
 }
