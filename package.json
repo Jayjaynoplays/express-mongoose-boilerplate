@@ -1,41 +1,35 @@
 {
-  "name": "training-admin",
+  "name": "mongoose-boilerplate",
   "version": "1.0.0",
-  "description": "This is a admin page",
+  "description": "This is a mongoose boilerplate",
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix --ext .js .",
-    "dev": "nodemon --exec babel-node ./src/bin/www.js",
+    "dev": "nodemon --exec babel-node src/core/bin/www.js",
     "start": "npm run build && node ./dist/bin/www.js",
     "clean": "rm -rf dist && mkdir dist",
     "build:babel": "babel ./src --out-dir dist --copy-files",
     "build": "yarn run clean && yarn run build:babel",
-    "create:table": "node_modules/.bin/knex migrate:make",
-    "migrate:latest": "node_modules/.bin/knex migrate:latest",
-    "migrate:rollback": "node_modules/.bin/knex migrate:rollback",
-    "migrate:reset": "yarn run migrate:rollback && yarn run migrate:latest && yarn run seed:run",
-    "seed:run": "node_modules/.bin/knex seed:run",
     "heroku-postbuild": "yarn install && yarn migrate:reset && yarn run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dangphu2412/admin-training.git"
+    "url": "git+https://github.com/dangphu2412/express-mongoose-boilerplate.git"
   },
   "keywords": [
     "nodejs",
     "express",
-    "postgresql",
-    "admin"
+    "mongodb",
+    "mongoose"
   ],
   "author": "dangphu2412",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dangphu2412/admin-training/issues"
+    "url": "https://github.com/dangphu2412/express-mongoose-boilerplate/issues"
   },
-  "homepage": "https://github.com/dangphu2412/admin-training#readme",
+  "homepage": "https://github.com/dangphu2412/express-mongoose-boilerplate#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "admin": "^1.4.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -44,7 +38,6 @@
     "express": "^4.17.1",
     "http-status": "^1.5.0",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.12",
     "method-override": "^3.0.0",
     "pg": "^8.5.1",
     "winston": "^3.3.3"
