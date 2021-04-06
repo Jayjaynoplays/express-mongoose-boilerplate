@@ -35,7 +35,12 @@ export class MongooseProvider {
             await this.#mongooseInstance
                 .connect(
                     this.#connectionString,
-                    { useNewUrlParser: true, useUnifiedTopology: true }
+                    {
+                        useNewUrlParser: true,
+                        useUnifiedTopology: true,
+                        useFindAndModify: false,
+                        useCreateIndex: true
+                    }
                 );
             MongooseProvider.logger.info('MongoDB connection success');
             flag = true;
@@ -51,10 +56,9 @@ export class MongooseProvider {
      *
      * @param {string} name Name of schema
      * @param {import('mongoose').SchemaOptions} config Table Schema
-     * @returns {*}
+     * @returns {Model<Document>}
      */
     buildModel(name, config) {
-        const schema = this.#mongooseInstance.Schema(config, { collection: name });
-        return this.#mongooseInstance.model(name, schema);
+        return this.#mongooseInstance.model(name, config);
     }
 }

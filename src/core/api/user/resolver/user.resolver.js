@@ -1,5 +1,6 @@
 import { Module } from '../../../../packages/handler/Module';
 import { UserController } from '../controller/user.controller';
+import { UserValidator } from '../../../modules/user/validator/user.validator';
 
 export const UserResolver = Module.builder()
     .addPrefix({
@@ -11,6 +12,12 @@ export const UserResolver = Module.builder()
         {
             route: '/',
             method: 'get',
-            controller: UserController.test
+            controller: UserController.findAll
+        },
+        {
+            route: '/',
+            method: 'post',
+            middlewares: [UserValidator.createValidation()],
+            controller: UserController.createOne
         }
     ]);

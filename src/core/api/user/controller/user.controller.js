@@ -1,6 +1,13 @@
+import { UserService } from '../../../modules/user/service/user.service';
+
 class Controller {
-    // eslint-disable-next-line no-unused-vars
-    test = req => 'Hello world'
+    constructor() {
+        this.service = UserService;
+    }
+
+    findAll = req => this.service.findAll(req.query)
+
+    createOne = req => this.service.createOne(req.body)
 }
 
 export const UserController = new Controller();

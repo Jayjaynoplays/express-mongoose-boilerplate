@@ -1,7 +1,8 @@
 import express from 'express';
-import { OK } from 'http-status';
+import { OK, INTERNAL_SERVER_ERROR } from 'http-status';
 import { logger } from '../../core/modules/logger/winston';
 import { ArgumentRequired } from './exceptions/ArgumentRequired';
+import { ERROR_CODE } from '../../core/common/enum';
 
 export class Module {
     static logger = logger;
@@ -14,7 +15,7 @@ export class Module {
         return new Module();
     }
 
-    #createHandler = controller => async (request, response, next) => {
+    #createHandler = controller => async (request, response) => {
             try {
                 const data = await controller(request);
                 return response.status(OK).json({
@@ -22,7 +23,12 @@ export class Module {
                     data,
                 });
             } catch (err) {
-                return next(err);
+                Module.logger.error(err.message);
+                return response.status(INTERNAL_SERVER_ERROR).json({
+                    status: INTERNAL_SERVER_ERROR,
+                    error: err.message,
+                    code: ERROR_CODE.INTERNAL
+                });
             }
         }
 

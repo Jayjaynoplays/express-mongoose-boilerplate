@@ -4,6 +4,7 @@ import methodOverride from 'method-override';
 import cors from 'cors';
 import { logger } from '../modules/logger/winston';
 import { DatabaseInstance } from './database';
+import { CORS_ALLOW } from '../env';
 
 export class AppBundle {
     static logger = logger;
@@ -36,7 +37,10 @@ export class AppBundle {
         /**
          * Setup basic express
          */
-        this.app.use(cors());
+        this.app.use(cors({
+            origin: CORS_ALLOW,
+            optionsSuccessStatus: 200
+        }));
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
 
