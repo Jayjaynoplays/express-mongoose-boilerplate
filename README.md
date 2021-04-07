@@ -5,45 +5,33 @@
 - Install nodejs
 - First create .env file by this command
 ```bash
-$ cp .env.example ./.env
+cp .env.example ./.env
 ```
-- Config environment variables match to what you want
-
-### Setup Docker
-- Configure postgres database variable in docker-compose.yml file
-- Configure DATABASE_URL in env file. 
-- In this case: DATABASE_URL=mongodb://username:password@host:port/database?options
-- Set NODE_ENV in .env file
-- Build and run container
-```bash
-$ docker-compose up 
-```
-- Remove compose container
-```bash
-$ docker-compose down
-```
-- If run docker-compose up successfully, then migrate database and seed data
-- Access node-psql environment
-```bash
-$ docker container exec -it node-psql bash
-```
-- Migrate data
-```bash
-$ yarn migrate:latest
-```
-- Seed data
-```bash
-$ yarn seed:run
-```
+- Config environment variables:
+    - Configure mongodb connection string (DATABASE_URL in env file).
+    - In this case: DATABASE_URL=mongodb://username:password@host:port/database?options
+    - Set NODE_ENV in .env file(default is development environment)
 
 ## Start project
-- To run project on dev local:
+### With npm:
+- To run project on development:
 ```bash
-$ yarn dev
+npm dev
 ```
 
 - To run project on production:
 
 ```bash
-$ yarn run build && yarn start
+npm start
+```
+### With yarn:
+- To run project on development:
+```bash
+yarn dev
+```
+
+- To run project on production:
+
+```bash
+yarn start
 ```
