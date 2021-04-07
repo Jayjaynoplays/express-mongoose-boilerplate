@@ -3,10 +3,14 @@ import { JWT_SECRET, EXPIRE_DAYS } from '../../env';
 import { logger } from '../logger/winston';
 
 class Jwt {
-    constructor(secret, expiresIn) {
-        this.secret = secret;
-        this.expiresIn = expiresIn;
-        logger.info('initiate Jwt module');
+    static logger = logger;
+
+    secret = JWT_SECRET;
+
+    expiresIn = EXPIRE_DAYS;
+
+    constructor() {
+        Jwt.logger.info('Building jwt module');
     }
 
     sign(payload) {
@@ -20,4 +24,4 @@ class Jwt {
     }
 }
 
-export const JwtService = new Jwt(JWT_SECRET, EXPIRE_DAYS);
+export const JwtSingleton = new Jwt();

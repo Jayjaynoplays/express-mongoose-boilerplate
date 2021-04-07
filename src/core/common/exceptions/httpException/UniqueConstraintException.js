@@ -1,5 +1,5 @@
 import { CONFLICT } from 'http-status';
-import { ERROR_CODE } from '../enum';
+import { ERROR_CODE } from '../../enum';
 import { HttpException } from './HttpException';
 
 export class UniqueConstraintException extends HttpException {

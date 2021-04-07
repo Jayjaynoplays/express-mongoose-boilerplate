@@ -5,6 +5,7 @@ import cors from 'cors';
 import { logger } from '../modules/logger/winston';
 import { DatabaseInstance } from './database';
 import { CORS_ALLOW } from '../env';
+import { InvalidFilter } from '../common/exceptions/systemError/InvalidFilter';
 
 export class AppBundle {
     static logger = logger;
@@ -27,6 +28,22 @@ export class AppBundle {
      */
     applyResolver(resolver) {
         this.app.use(resolver);
+        return this;
+    }
+
+    /**
+     *
+     * @param {[]} filters
+     * @returns {AppBundle}
+     */
+    applyGlobalFilters(filters) {
+        filters.forEach(filter => {
+            if (filter['filter']) {
+                this.app.use(filter.filter);
+            } else {
+                throw new InvalidFilter(filter);
+            }
+        });
         return this;
     }
 
