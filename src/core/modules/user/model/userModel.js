@@ -1,3 +1,4 @@
+import { Schema } from 'mongoose';
 import { DatabaseInstance } from '../../../config/database';
 
 export const UserModel = DatabaseInstance
@@ -13,4 +14,5 @@ export const UserModel = DatabaseInstance
             trim: true,
             required: true,
         },
+        roles: [{ type: Schema.Types.ObjectId, ref: 'role' }]
     });
