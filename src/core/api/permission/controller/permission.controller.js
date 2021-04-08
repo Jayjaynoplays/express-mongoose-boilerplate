@@ -1,8 +1,8 @@
-import { UserService } from '../../../modules/user/service/user.service';
+import { PermissionService } from '../../../modules/permission/service/permission.service';
 
 class Controller {
     constructor() {
-        this.service = UserService;
+        this.service = PermissionService;
     }
 
     findAll = req => this.service.findAll(req.query)
@@ -16,4 +16,4 @@ class Controller {
     deleteOne = req => this.service.deleteOne(req.params)
 }
 
-export const UserController = new Controller();
+export const PermissionController = new Controller();

@@ -3,8 +3,8 @@ import { ERROR_CODE } from '../common/enum';
 
 const joiMappingErrorMessages = e => e.details.map(detail => detail.message);
 
-export const joiFilter = schema => async (req, res, next) => {
-    const validationResult = await schema.validate(req.body);
+export const joiFilter = (schema, field) => async (req, res, next) => {
+    const validationResult = await schema.validate(req[field]);
 
     return validationResult.error
         ? res.status(BAD_REQUEST).json({

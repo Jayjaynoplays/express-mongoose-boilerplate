@@ -1,8 +1,8 @@
-import { UserService } from '../../../modules/user/service/user.service';
+import { RoleService } from '../../../modules/role/service/role.service';
 
 class Controller {
     constructor() {
-        this.service = UserService;
+        this.service = RoleService;
     }
 
     findAll = req => this.service.findAll(req.query)
@@ -16,4 +16,4 @@ class Controller {
     deleteOne = req => this.service.deleteOne(req.params)
 }
 
-export const UserController = new Controller();
+export const RoleController = new Controller();
