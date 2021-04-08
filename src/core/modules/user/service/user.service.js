@@ -1,7 +1,12 @@
-import { NotFoundException } from '../../../common/exceptions/NotFoundException';
 import { UserModel } from '../model/userModel';
+import { BcryptService } from '../../auth/bcrypt';
+import { NotFoundException } from '../../../common/exceptions/httpException';
 
 class Service {
+    constructor() {
+        this.bcrypt = BcryptService;
+    }
+
     findAll({ page = 1, size = 10 }) {
       return UserModel.find()
         .limit(size)
@@ -10,10 +15,10 @@ class Service {
     }
 
     createOne({ email, password, roles }) {
-      const userModel = new UserModel();
-      userModel.email = email;
-      userModel.password = password;
-      userModel.roles = roles;
+        const userModel = new UserModel();
+        userModel.email = email;
+        userModel.password = this.bcrypt.hash(password);
+        userModel.roles = roles;
       return userModel.save();
     }
 
