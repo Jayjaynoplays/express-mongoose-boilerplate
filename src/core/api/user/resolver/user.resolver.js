@@ -15,9 +15,24 @@ export const UserResolver = Module.builder()
             controller: UserController.findAll
         },
         {
+            route: '/:id',
+            method: 'get',
+            controller: UserController.findOne,
+        },
+        {
             route: '/',
             method: 'post',
             middlewares: [UserValidator.createValidation()],
             controller: UserController.createOne
+        },
+        {
+            route: '/:id',
+            method: 'patch',
+            controller: UserController.patchOne
+        },
+        {
+            route: '/:id',
+            method: 'delete',
+            controller: UserController.deleteOne,
         }
     ]);

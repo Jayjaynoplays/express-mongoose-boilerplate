@@ -7,12 +7,12 @@ export const UserModel = DatabaseInstance
             type: String,
             unique: true,
             lowercase: true,
-            required: true,
+            required: [true, 'User email is empty'],
         },
         password: {
             type: String,
             trim: true,
-            required: true,
+            required: [true, 'User password is empty'],
         },
         roles: [{ type: Schema.Types.ObjectId, ref: 'role' }]
     });
