@@ -16,8 +16,12 @@ class Service {
       return roleModel.save();
     }
 
-    findOne({ id }) {
-      return RoleModel.findById(id).exec();
+    async findOne({ id }) {
+      const role = await RoleModel.findById(id).exec();
+      if (!role) {
+        throw new NotFoundException('Role not found');
+      }
+      return role;
     }
 
     async patchOne({ id }, { name, permissions }) {
@@ -31,7 +35,11 @@ class Service {
     }
 
     deleteOne({ id }) {
-      return RoleModel.findByIdAndDelete(id).exec();
+      const deletedRole = RoleModel.findByIdAndDelete(id).exec();
+      if (!deletedRole) {
+        throw new NotFoundException('Role not found');
+      }
+      return deletedRole;
     }
 }
 

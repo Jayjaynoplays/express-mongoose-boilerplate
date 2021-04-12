@@ -12,22 +12,28 @@ export const PermissionResolver = Module.builder()
         {
             route: '/',
             method: 'get',
+            middlewares: [PermissionValidator.validateQuery()],
             controller: PermissionController.findAll
         },
         {
             route: '/',
             method: 'post',
-            middlewares: [PermissionValidator.createValidation()],
+            middlewares: [PermissionValidator.validatePost()],
             controller: PermissionController.createOne
         },
         {
           route: '/:id',
           method: 'patch',
+          middlewares: [
+            PermissionValidator.validateParam(),
+            PermissionValidator.validatePatch()
+          ],
           controller: PermissionController.patchOne
         },
         {
             route: '/:id',
             method: 'delete',
+            middlewares: [PermissionValidator.validateParam()],
             controller: PermissionController.deleteOne,
         }
     ]);

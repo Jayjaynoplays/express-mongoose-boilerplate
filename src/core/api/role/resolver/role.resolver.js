@@ -12,27 +12,34 @@ export const RoleResolver = Module.builder()
         {
             route: '/',
             method: 'get',
+            middlewares: [RoleValidator.validateQuery()],
             controller: RoleController.findAll
         },
         {
             route: '/:id',
             method: 'get',
+            middlewares: [RoleValidator.validateParam()],
             controller: RoleController.findOne
         },
         {
             route: '/',
             method: 'post',
-            middlewares: [RoleValidator.createValidation()],
+            middlewares: [RoleValidator.validatePost()],
             controller: RoleController.createOne
         },
         {
           route: '/:id',
           method: 'patch',
+          middlewares: [
+            RoleValidator.validateParam(),
+            RoleValidator.validatePatch(),
+          ],
           controller: RoleController.patchOne
         },
         {
             route: '/:id',
             method: 'delete',
+            middlewares: [RoleValidator.validateParam()],
             controller: RoleController.deleteOne,
         }
     ]);

@@ -17,8 +17,12 @@ class Service {
       return userModel.save();
     }
 
-    findOne({ id }) {
-      return UserModel.findById(id).exec();
+    async findOne({ id }) {
+      const user = await UserModel.findById(id).exec();
+      if (!user) {
+        throw new NotFoundException('User not found');
+      }
+      return user;
     }
 
     async patchOne({ id }, { email, password, roles }) {
@@ -26,14 +30,18 @@ class Service {
       if (!user) {
         throw new NotFoundException('User not found');
       }
-      user.email = email;
-      user.password = password;
-      user.roles = roles;
+      user.email = email || user.email;
+      user.password = password || user.password;
+      user.roles = roles || user.roles;
       return user.save();
     }
 
-    deleteOne({ id }) {
-      return UserModel.findByIdAndDelete(id).exec();
+    async deleteOne({ id }) {
+      const user = await UserModel.findByIdAndDelete(id).exec();
+      if (!user) {
+        throw new NotFoundException('User not found');
+      }
+      return user;
     }
 }
 
