@@ -1,5 +1,5 @@
 import { BAD_REQUEST } from 'http-status';
-import { ERROR_CODE } from '../common/enum';
+import { ERROR_CODE } from '../../packages/httpException/error.enum';
 
 const joiMappingErrorMessages = e => e.details.map(detail => detail.message);
 

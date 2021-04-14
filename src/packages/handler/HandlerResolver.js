@@ -3,6 +3,11 @@ import express from 'express';
 export class HandlerResolver {
     #globalRouter = express.Router();
 
+    /**
+     * @type {import('../swagger/rebuild/core')} swagger instance
+     */
+    #swagger;
+
     static builder() {
         return new HandlerResolver();
     }
@@ -14,7 +19,13 @@ export class HandlerResolver {
     addModule(modules) {
         modules.forEach(module => {
             module.build(this.#globalRouter);
+            module.buildSwagger(this.#swagger);
         });
+        return this;
+    }
+
+    addSwaggerBuilder(swagger) {
+        this.#swagger = swagger;
         return this;
     }
 
