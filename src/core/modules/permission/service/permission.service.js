@@ -1,5 +1,5 @@
-import { NotFoundException } from '../../../common/exceptions';
 import { PermissionModel } from '../model/permissionModel';
+import { NotFoundException } from '../../../common/exceptions/httpException';
 
 class Service {
     findAll({ page = 1, size = 10 }) {

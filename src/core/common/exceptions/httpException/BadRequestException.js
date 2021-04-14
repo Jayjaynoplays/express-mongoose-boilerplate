@@ -1,6 +1,6 @@
 import { BAD_REQUEST } from 'http-status';
 import { HttpException } from './HttpException';
-import { ERROR_CODE } from '../enum';
+import { ERROR_CODE } from '../../enum';
 
 export class BadRequestException extends HttpException {
     constructor(msg = 'Bad request') {
