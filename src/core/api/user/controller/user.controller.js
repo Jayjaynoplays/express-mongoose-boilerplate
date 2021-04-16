@@ -1,7 +1,7 @@
 import { UserService } from '../../../modules/user/service/user.service';
 import { RequestFormation } from '../../../../packages/restBuilder/core/requestFormation';
 import SearchUserSchema from '../query/searchUser.schema.json';
-import { Pageable, PageableMetaImpl } from '../../../../packages/restBuilder/core/pageable';
+import { Pageable, PageableMeta } from '../../../../packages/restBuilder/core/pageable';
 
 class Controller {
     constructor() {
@@ -14,9 +14,9 @@ class Controller {
         const count = await this.service.count();
         return Pageable.of(data)
             .addMeta(
-                PageableMetaImpl
+                PageableMeta
                     .builder()
-                    .appendQueryContainer(reqFormation)
+                    .appendRequestFormation(reqFormation)
                     .appendTotalRecord(count)
                     .build()
             )

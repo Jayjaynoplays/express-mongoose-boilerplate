@@ -1,3 +1,8 @@
+/**
+ * @notes
+ - Add an instance which contain receive method()
+ - When we finish config and call publish it will send all the data to listeners
+ */
 export class ConfigPublisher {
     context = null;
 

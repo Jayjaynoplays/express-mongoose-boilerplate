@@ -3,7 +3,21 @@ import { PaginationFactory } from '../../modules/factory/pagination.factory';
 import { SortFactory } from '../../modules/factory/sort.factory';
 import { FilterFactory } from '../../modules/factory/filter.factory';
 import { SearchFactory } from '../../modules/factory/search.factory';
-
+/**
+ * @notes This class consists of factory which will produce the final format
+ {
+        pagination: {
+            page,
+            size,
+            offset
+        },
+        filters,
+        sorts,
+        search,
+        main,
+        associates
+     }
+ */
 export class RequestFormation {
     content;
 
@@ -25,6 +39,10 @@ export class RequestFormation {
             .validate(locks);
     }
 
+    /**
+     * @param {any} req from client
+     * @param relationSchema backend definition in json schema file
+     */
     constructor(req, relationSchema) {
         this.content = {};
         this.content.pagination = RequestFormation.paginationFactory.produce(req);
@@ -35,6 +53,30 @@ export class RequestFormation {
         this.content.associates = relationSchema?.associates;
         RequestFormation.constructValidator(this.content, relationSchema?.locks);
     }
+
+    /**
+     * Method to communicate wit others class
+     * @returns {{
+        pagination: {
+            page: number,
+            size: number,
+            offset: number
+        },
+        filters: [{column: string,sign: '$eq' | '$gt' | '$like',value: string}],
+        sorts: [{sort, order}],
+        search,
+        main: string[],
+        associates
+     }}
+     */
+    translate() {
+        return this.content;
+    }
+
+    /**
+     * ! All of these classes will provide method to add filter,sort,search !
+     *                          via string method
+     */
 
     setPage(page) {
         this.content.pagination.page = page;
@@ -73,9 +115,5 @@ export class RequestFormation {
     addSearch(input) {
         this.content.search = input;
         return this;
-    }
-
-    translate() {
-        return this.content;
     }
 }
