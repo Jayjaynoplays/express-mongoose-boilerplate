@@ -25,14 +25,13 @@ export class SwaggerContentCreator {
             .join('/');
     }
 
-    #toParams = params => {
-        const autoGenParams = SwaggerDocument.ApiParams(this.#rawContent.route);
-
-        if (!params || params.length === 0) {
-            return [];
+    #toParams = () => {
+        const autoGenParams = SwaggerDocument.extractParam(this.#rawContent.route);
+        if (!this.#rawContent.params || this.#rawContent.params.length === 0) {
+            return [...autoGenParams];
         }
 
-        return [...params, ...autoGenParams];
+        return [...this.#rawContent.params, ...autoGenParams];
     }
 
     fromJson(rawContent) {
@@ -46,8 +45,8 @@ export class SwaggerContentCreator {
     }
 
     build() {
-        this.#rawContent.route = this.#toRouteSwagger();
         this.#rawContent.params = this.#toParams();
+        this.#rawContent.route = this.#toRouteSwagger();
         this.#rawContent.tags = [this.#prefixRoute.tag];
         return this.#rawContent;
     }

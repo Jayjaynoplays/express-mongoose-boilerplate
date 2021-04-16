@@ -20,12 +20,22 @@ export class SwaggerDocument {
         file: {
             type: 'file',
         },
-        array: item => ({
-            type: 'array',
-            items: {
-                $ref: `#/components/schemas/${item}`,
-            },
-        }),
+        array: item => {
+            if (item) {
+                return {
+                    type: 'array',
+                    items: {
+                        $ref: `#/components/schemas/${item}`,
+                    }
+                };
+            }
+            return {
+                type: 'array',
+                items: {
+                    type: 'string'
+                }
+            };
+        },
         enum: enumModel => ({
             type: 'string',
             enum: Object.values(enumModel),
@@ -109,5 +119,24 @@ export class SwaggerDocument {
             required,
             description,
         };
+    }
+
+    static extractParam(route) {
+        const params = [];
+        route.split('/').forEach(el => {
+            if (el.startsWith(':')) {
+                const pattern = el.split(':')[1];
+                params.push({
+                    name: pattern,
+                    in: 'path',
+                    schema: {
+                        type: 'integer',
+                        format: 'int64',
+                    },
+                    required: true,
+                });
+            }
+        });
+        return params;
     }
 }

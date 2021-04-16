@@ -129,24 +129,4 @@ export class SwaggerBuilder {
             properties,
         };
     }
-
-    addParam(route) {
-        const params = [];
-        route.split('/').forEach(el => {
-            if (el.startsWith(':')) {
-                const pattern = el.split(':')[1];
-                params.push({
-                    name: pattern,
-                    in: 'path',
-                    schema: {
-                        type: 'integer',
-                        format: 'int64',
-                    },
-                    required: true,
-                    description: 'Required id',
-                });
-            }
-        });
-        return params;
-    }
 }
