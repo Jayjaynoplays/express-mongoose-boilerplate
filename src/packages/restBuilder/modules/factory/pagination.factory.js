@@ -6,19 +6,19 @@ export class PaginationFactory {
 
     static DEFAULT_RADIX = 10;
 
-    static MAX_PAGE: number = null;
+    static MAX_PAGE = null;
 
-    static MAX_SIZE: number = null;
+    static MAX_SIZE = null;
 
-    static DEFAULT_PAGE: number = null;
+    static DEFAULT_PAGE = null;
 
-    static DEFAULT_SIZE: number = null;
+    static DEFAULT_SIZE = null;
 
     constructor() {
-        PaginationFactory.logger.log(`${PaginationFactory.name} factory is built`);
+        PaginationFactory.logger.info(`${PaginationFactory.name} factory is built`);
     }
 
-    produce(req: any) {
+    produce(req) {
         return this.transform(req);
     }
 
@@ -40,11 +40,12 @@ export class PaginationFactory {
 
         return {
             page: parsedPage,
-            size: parsedSize
+            size: parsedSize,
+            offset: (parsedPage - 1) * parsedSize
         };
     }
 
-    static receive(obj): void {
+    static receive(obj) {
         PaginationFactory.MAX_PAGE = obj.MAX_PAGE;
         PaginationFactory.MAX_SIZE = obj.MAX_SIZE;
         PaginationFactory.DEFAULT_PAGE = obj.DEFAULT_PAGE;

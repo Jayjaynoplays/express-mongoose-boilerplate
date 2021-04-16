@@ -5,10 +5,10 @@ export class SortFactory {
     static logger = logger
 
     constructor() {
-        SortFactory.logger.log(`${SortFactory.name} factory is built`);
+        SortFactory.logger.info(`${SortFactory.name} factory is built`);
     }
 
-    produce(req: any) {
+    produce(req) {
         return this.transform(req);
     }
 

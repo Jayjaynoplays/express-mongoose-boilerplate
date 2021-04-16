@@ -6,7 +6,7 @@ export class SearchFactory {
     static REGEX_SEARCH_CLEANER = '/[^\\w\\s]/gi';
 
     constructor() {
-        SearchFactory.logger.log(`${SearchFactory.name} factory is built`);
+        SearchFactory.logger.info(`${SearchFactory.name} factory is built`);
     }
 
     produce(req) {

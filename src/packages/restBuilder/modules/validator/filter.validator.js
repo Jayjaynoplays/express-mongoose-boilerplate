@@ -11,7 +11,7 @@ export class FilterValidator {
         this.listValidator.push(new FilterSignValidator());
     }
 
-    validate(obj: string[]): void {
+    validate(obj) {
         this.listValidator.forEach(item => {
             item.validate(obj);
         });

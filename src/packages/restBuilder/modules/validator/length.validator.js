@@ -1,9 +1,9 @@
 import { BadRequestException } from '../../../httpException/BadRequestException';
 
 export class LengthValidator {
-    #message: string;
+    #message;
 
-    #lengthValidate: number;
+    #lengthValidate;
 
     constructor(lengthValidate, message) {
         this.#lengthValidate = lengthValidate;
@@ -14,7 +14,7 @@ export class LengthValidator {
         }
     }
 
-    validate(obj: string[]): void {
+    validate(obj) {
         if (obj.length !== this.#lengthValidate) {
             throw new BadRequestException(this.#message);
         }

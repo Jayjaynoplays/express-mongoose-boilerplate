@@ -1,16 +1,16 @@
 import { logger } from '../../../../core/modules/logger/winston';
 import { FilterValidator } from '../validator/filter.validator';
 
-export class FilterFactory implements FilterFactory {
+export class FilterFactory {
     static logger = logger;
 
     static filterValidator = new FilterValidator();
 
     constructor() {
-        FilterFactory.logger.log(`${FilterFactory.name} factory is built`);
+        FilterFactory.logger.info(`${FilterFactory.name} factory is built`);
     }
 
-    produce(req: any) {
+    produce(req) {
         return this.transform(req);
     }
 
@@ -32,7 +32,7 @@ export class FilterFactory implements FilterFactory {
         return listFilter;
     }
 
-    transformOne(filter: string) {
+    transformOne(filter) {
         const filterItems = filter.split('|');
 
         FilterFactory.filterValidator.validate(filterItems);

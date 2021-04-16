@@ -19,26 +19,25 @@ export class LockValidator {
         return this;
     }
 
-    validate(obj): void {
+    validate(obj) {
         if (!obj) return;
 
         const { filters, sorts } = obj;
 
         if (Array.isArray(sorts) && this.sorts.length > 0) {
-            const isNotInvalidField = this.sorts.some(item => !sorts.includes(item.sort));
+            const isNotValidField = !this.sorts.some(item => sorts.includes(item.sort));
 
-            if (isNotInvalidField) {
+            if (isNotValidField) {
                 throw new BadRequestException('Invalid sort field');
             }
         } else {
             // TODO: develop in the future
             // - Support for ban fields and allows fields
         }
-
         if (Array.isArray(filters) && this.filters.length > 0) {
-            const isNotInvalidField = this.filters.some(item => !filters.includes(item.column));
+            const isNotInvalidField = !this.filters.some(item => filters.includes(item.column));
 
-            if (!isNotInvalidField) {
+            if (isNotInvalidField) {
                 throw new BadRequestException('Invalid filter field');
             }
         } else {

@@ -31,9 +31,9 @@ export class RequestFormation {
         this.content.filters = RequestFormation.filterFactory.produce(req);
         this.content.sorts = RequestFormation.sortFactory.produce(req);
         this.content.search = RequestFormation.searchFactory.produce(req);
-        this.content.main = relationSchema.main;
-        this.content.associates = relationSchema.associates;
-        RequestFormation.constructValidator(this.content, relationSchema.locks);
+        this.content.main = relationSchema?.main;
+        this.content.associates = relationSchema?.associates;
+        RequestFormation.constructValidator(this.content, relationSchema?.locks);
     }
 
     setPage(page) {
@@ -56,21 +56,21 @@ export class RequestFormation {
         return this;
     }
 
-    addSort(input): this {
+    addSort(input) {
         this.content.sorts.push(
             RequestFormation.sortFactory.produce(input)[0]
         );
         return this;
     }
 
-    addFilter(input): this {
+    addFilter(input) {
         this.content.filters.push(
             RequestFormation.filterFactory.produce(input)[0]
         );
         return this;
     }
 
-    addSearch(input): this {
+    addSearch(input) {
         this.content.search = input;
         return this;
     }

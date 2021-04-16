@@ -7,10 +7,10 @@ class Service {
         this.bcrypt = BcryptService;
     }
 
-    findAll({ page = 1, size = 10 }) {
+    findAll(queryFormation) {
       return UserModel.find()
-        .limit(size)
-        .skip((page - 1) * size)
+        .limit(queryFormation.pagination.size)
+        .skip(queryFormation.pagination.offset)
         .exec();
     }
 
