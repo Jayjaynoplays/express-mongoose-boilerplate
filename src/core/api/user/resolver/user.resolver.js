@@ -12,7 +12,7 @@ export const UserResolver = Module.builder()
         {
             route: '/',
             method: 'get',
-            middlewares: [UserValidator.validateQuery()],
+            // middlewares: [UserValidator.validateQuery()],
             controller: UserController.findAll
         },
         {
