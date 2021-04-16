@@ -1,6 +1,7 @@
 import { Module } from '../../../../packages/handler/Module';
 import { UserController } from '../controller/user.controller';
 import { UserValidator } from '../../../modules/user/validator/user.validator';
+import { ApiFilterSwagger } from '../../../common/swagger/filter';
 
 export const UserResolver = Module.builder()
     .addPrefix({
@@ -12,8 +13,9 @@ export const UserResolver = Module.builder()
         {
             route: '/',
             method: 'get',
-            // middlewares: [UserValidator.validateQuery()],
-            controller: UserController.findAll
+            middlewares: [UserValidator.validateQuery()],
+            controller: UserController.findAll,
+            params: ApiFilterSwagger
         },
         {
             route: '/:id',

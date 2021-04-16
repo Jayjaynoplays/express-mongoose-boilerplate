@@ -20,7 +20,8 @@ export class Module {
             middlewares,
             preAuthorization,
             description,
-            model?:any
+            model?:any,
+            params?: any
         }
      ]
      } content
@@ -77,7 +78,8 @@ export class Module {
             middlewares,
             preAuthorization,
             description,
-            model?:any
+            model?:any,
+            params?: any
         }
      } content
      */
@@ -114,7 +116,8 @@ export class Module {
             middlewares,
             preAuthorization,
             description,
-            model?:any
+            model?:any,
+            params?: any
         }]
      } apis
      */
