@@ -48,6 +48,10 @@ class Service {
       }
       return user;
     }
+
+    count() {
+        return UserModel.count({}).exec();
+    }
 }
 
 export const UserService = new Service();

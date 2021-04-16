@@ -1,15 +1,26 @@
 import { UserService } from '../../../modules/user/service/user.service';
 import { RequestFormation } from '../../../../packages/restBuilder/core/requestFormation';
 import SearchUserSchema from '../query/searchUser.schema.json';
+import { Pageable, PageableMetaImpl } from '../../../../packages/restBuilder/core/pageable';
 
 class Controller {
     constructor() {
         this.service = UserService;
     }
 
-    findAll = req => {
+    findAll = async req => {
         const reqFormation = new RequestFormation(req.query, SearchUserSchema);
-        return this.service.findAll(reqFormation.translate());
+        const data = await this.service.findAll(reqFormation.translate());
+        const count = await this.service.count();
+        return Pageable.of(data)
+            .addMeta(
+                PageableMetaImpl
+                    .builder()
+                    .appendQueryContainer(reqFormation)
+                    .appendTotalRecord(count)
+                    .build()
+            )
+            .build();
     }
 
     createOne = req => this.service.createOne(req.body)
