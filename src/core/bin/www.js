@@ -11,7 +11,7 @@ import app from '../index';
 import { PORT } from '../env';
 import { logger } from '../modules/logger/winston';
 
-const dubugHelper = debug('mongoose:server');
+const debugHelper = debug('mongoose:server');
 
 /**
  * Normalize a port into a number, string, or false.
@@ -83,7 +83,7 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? `pipe ${addr}`
     : `port ${addr.port}`;
-  dubugHelper(`Listening on ${bind}`);
+  debugHelper(`Listening on ${bind}`);
 }
 
 /**

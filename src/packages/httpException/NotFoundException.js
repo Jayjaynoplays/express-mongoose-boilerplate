@@ -1,5 +1,5 @@
 import { NOT_FOUND } from 'http-status';
-import { ERROR_CODE } from '../../enum';
+import { ERROR_CODE } from './error.enum';
 import { HttpException } from './HttpException';
 
 export class NotFoundException extends HttpException {

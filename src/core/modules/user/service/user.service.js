@@ -1,6 +1,6 @@
+import { NotFoundException } from '../../../../packages/httpException';
 import { UserModel } from '../model/userModel';
 import { BcryptService } from '../../auth/bcrypt';
-import { NotFoundException } from '../../../common/exceptions/httpException';
 
 class Service {
     constructor() {

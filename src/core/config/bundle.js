@@ -2,13 +2,20 @@
 import * as express from 'express';
 import methodOverride from 'method-override';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 import { logger } from '../modules/logger/winston';
 import { DatabaseInstance } from './database';
 import { CORS_ALLOW } from '../env';
-import { InvalidFilter } from '../common/exceptions/systemError/InvalidFilter';
+import { InvalidFilter } from '../common/exceptions/system/InvalidFilter';
 
 export class AppBundle {
+    #swaggerBuilder;
+
     static logger = logger;
+
+    BASE_PATH = '/api';
+
+    BASE_PATH_SWAGGER = '/docs';
 
     static builder() {
         AppBundle.logger.info('🌶🌶🌶 App is starting bundling 🌶🌶🌶');
@@ -27,7 +34,7 @@ export class AppBundle {
      * @param {import('../../packages/handler/HandlerResolver')} resolver
      */
     applyResolver(resolver) {
-        this.app.use(resolver);
+        this.app.use(this.BASE_PATH, resolver);
         return this;
     }
 
@@ -44,6 +51,11 @@ export class AppBundle {
                 throw new InvalidFilter(filter);
             }
         });
+        return this;
+    }
+
+    applySwagger(swaggerBuilder) {
+        this.#swaggerBuilder = swaggerBuilder;
         return this;
     }
 
@@ -78,7 +90,6 @@ export class AppBundle {
             }),
         );
         AppBundle.logger.info('🌶🌶🌶 Building initial config 🌶🌶🌶');
-
         return this;
     }
 
@@ -87,6 +98,12 @@ export class AppBundle {
      */
     async run() {
         AppBundle.logger.info('🌶🌶🌶 Building asynchronous config 🌶🌶🌶');
+        this.app.use(
+            this.BASE_PATH_SWAGGER,
+            swaggerUi.serve,
+            swaggerUi.setup(this.#swaggerBuilder.instance)
+        );
+        AppBundle.logger.info('🌶🌶🌶 Building swagger 🌶🌶🌶');
         await DatabaseInstance.connect();
     }
 }
