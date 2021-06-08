@@ -1,8 +1,8 @@
 import express from 'express';
 import { OK, INTERNAL_SERVER_ERROR } from 'http-status';
+import { SwaggerContentCreator } from 'packages/swagger/core/content';
 import { logger } from '../../core/modules/logger/winston';
 import { ArgumentRequired } from './exceptions/ArgumentRequired';
-import { SwaggerContentCreator } from '../swagger/rebuild/content';
 import { SwaggerContentDto } from '../swagger/model/SwaggerContentDto';
 import { HttpException } from '../httpException/HttpException';
 import { ERROR_CODE } from '../httpException/error.enum';
