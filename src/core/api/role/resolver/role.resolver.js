@@ -28,13 +28,13 @@ export const RoleResolver = Module.builder()
             controller: RoleController.createOne
         },
         {
-          route: '/:id',
-          method: 'patch',
-          middlewares: [
-            RoleValidator.validateParam(),
-            RoleValidator.validatePatch(),
-          ],
-          controller: RoleController.patchOne
+            route: '/:id',
+            method: 'patch',
+            middlewares: [
+                RoleValidator.validateParam(),
+                RoleValidator.validatePatch(),
+            ],
+            controller: RoleController.patchOne
         },
         {
             route: '/:id',

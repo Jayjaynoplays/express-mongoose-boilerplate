@@ -22,13 +22,13 @@ export const PermissionResolver = Module.builder()
             controller: PermissionController.createOne
         },
         {
-          route: '/:id',
-          method: 'patch',
-          middlewares: [
-            PermissionValidator.validateParam(),
-            PermissionValidator.validatePatch()
-          ],
-          controller: PermissionController.patchOne
+            route: '/:id',
+            method: 'patch',
+            middlewares: [
+                PermissionValidator.validateParam(),
+                PermissionValidator.validatePatch()
+            ],
+            controller: PermissionController.patchOne
         },
         {
             route: '/:id',

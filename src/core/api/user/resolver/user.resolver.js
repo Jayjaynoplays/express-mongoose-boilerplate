@@ -33,8 +33,8 @@ export const UserResolver = Module.builder()
             route: '/:id',
             method: 'patch',
             middlewares: [
-              UserValidator.validateParam(),
-              UserValidator.validatePatch(),
+                UserValidator.validateParam(),
+                UserValidator.validatePatch(),
             ],
             controller: UserController.patchOne
         },
