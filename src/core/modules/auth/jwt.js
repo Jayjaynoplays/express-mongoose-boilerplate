@@ -1,6 +1,6 @@
-import { sign, decode } from 'jsonwebtoken';
-import { JWT_SECRET, EXPIRE_DAYS } from '../../env';
-import { logger } from '../logger/winston';
+import {sign, decode} from 'jsonwebtoken';
+import {JWT_SECRET, EXPIRE_DAYS} from '../../env';
+import {logger} from '../logger/winston';
 
 class Jwt {
     static logger = logger;

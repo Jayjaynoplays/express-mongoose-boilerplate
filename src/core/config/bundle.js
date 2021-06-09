@@ -3,10 +3,10 @@ import * as express from 'express';
 import methodOverride from 'method-override';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
-import { logger } from '../modules/logger/winston';
-import { DatabaseInstance } from './database';
-import { CORS_ALLOW } from '../env';
-import { InvalidFilter } from '../common/exceptions/system/InvalidFilter';
+import {logger} from '../modules/logger/winston';
+import {DatabaseInstance} from './database';
+import {CORS_ALLOW} from '../env';
+import {InvalidFilter} from '../common/exceptions/system/InvalidFilter';
 
 export class AppBundle {
     #swaggerBuilder;
@@ -71,7 +71,7 @@ export class AppBundle {
             optionsSuccessStatus: 200
         }));
         this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(express.urlencoded({extended: false}));
 
         /**
          * Setup method override method to use PUT, PATCH,...

@@ -1,5 +1,5 @@
-import { logger } from '../../../../core/modules/logger/winston';
-import { SortDirection } from '../../enum';
+import {logger} from '../../../../core/modules/logger/winston';
+import {SortDirection} from '../../enum';
 
 export class SortFactory {
     static logger = logger
@@ -13,7 +13,7 @@ export class SortFactory {
     }
 
     transform(input) {
-        const { sort } = input;
+        const {sort} = input;
         let listSortResult = [];
 
         if (!sort || sort.length === 0) return listSortResult;

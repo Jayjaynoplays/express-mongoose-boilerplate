@@ -1,5 +1,1 @@
-export class UserDetail {
-    toRoles() {}
-
-    toPermissions() {}
-}
+export class UserDetail {}

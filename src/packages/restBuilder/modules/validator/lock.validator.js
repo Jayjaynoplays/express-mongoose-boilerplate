@@ -1,4 +1,4 @@
-import { BadRequestException } from '../../../httpException/BadRequestException';
+import {BadRequestException} from '../../../httpException/BadRequestException';
 
 export class LockValidator {
     sorts;
@@ -22,7 +22,7 @@ export class LockValidator {
     validate(obj) {
         if (!obj) return;
 
-        const { filters, sorts } = obj;
+        const {filters, sorts} = obj;
 
         if (Array.isArray(sorts) && this.sorts.length > 0) {
             const isNotValidField = !this.sorts.some(item => sorts.includes(item.sort));

@@ -1,22 +1,22 @@
-import { NotFoundException } from '../../../../packages/httpException';
-import { RoleModel } from '../model/roleModel';
+import {NotFoundException} from '../../../../packages/httpException';
+import {RoleModel} from '../model/roleModel';
 
 class Service {
-    findAll({ page = 1, size = 10 }) {
+    findAll({page = 1, size = 10}) {
         return RoleModel.find()
             .limit(size)
             .skip((page - 1) * size)
             .exec();
     }
 
-    createOne({ name, permissions }) {
+    createOne({name, permissions}) {
         const roleModel = new RoleModel();
         roleModel.name = name;
         roleModel.permissions = permissions;
         return roleModel.save();
     }
 
-    async findOne({ id }) {
+    async findOne({id}) {
         const role = await RoleModel.findById(id).exec();
         if (!role) {
             throw new NotFoundException('Role not found');
@@ -24,7 +24,7 @@ class Service {
         return role;
     }
 
-    async patchOne({ id }, { name, permissions }) {
+    async patchOne({id}, {name, permissions}) {
         const role = await RoleModel.findById(id).exec();
         if (!role) {
             throw new NotFoundException('Role not found');
@@ -34,7 +34,7 @@ class Service {
         return role.save();
     }
 
-    deleteOne({ id }) {
+    deleteOne({id}) {
         const deletedRole = RoleModel.findByIdAndDelete(id).exec();
         if (!deletedRole) {
             throw new NotFoundException('Role not found');

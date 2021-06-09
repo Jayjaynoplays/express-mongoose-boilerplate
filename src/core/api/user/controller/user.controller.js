@@ -1,7 +1,7 @@
-import { UserService } from '../../../modules/user/service/user.service';
-import { RequestFormation } from '../../../../packages/restBuilder/core/requestFormation';
+import {UserService} from '../../../modules/user/service/user.service';
+import {RequestFormation} from '../../../../packages/restBuilder/core/requestFormation';
 import SearchUserSchema from '../query/searchUser.schema.json';
-import { Pageable, PageableMeta } from '../../../../packages/restBuilder/core/pageable';
+import {Pageable, PageableMeta} from '../../../../packages/restBuilder/core/pageable';
 
 class Controller {
     constructor() {

@@ -1,4 +1,4 @@
-import { RestBuilderConfig } from '../../packages/restBuilder/core/configPublisher';
+import {RestBuilderConfig} from '../../packages/restBuilder/core/configPublisher';
 
 RestBuilderConfig.config({
     MAX_SIZE: 20,

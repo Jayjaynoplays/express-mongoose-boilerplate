@@ -1,5 +1,5 @@
-import { ConfigPublisher } from './ConfigPublisher';
-import { PaginationFactory } from '../../modules/factory/pagination.factory';
+import {ConfigPublisher} from './ConfigPublisher';
+import {PaginationFactory} from '../../modules/factory/pagination.factory';
 
 /**
  *

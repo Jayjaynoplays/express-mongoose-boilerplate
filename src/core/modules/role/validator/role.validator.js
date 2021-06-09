@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { joiFilter } from '../../../utils';
+import {joiFilter} from '../../../utils';
 
 class Validator {
     validateParam() {
@@ -12,7 +12,7 @@ class Validator {
     validateQuery() {
         const schema = Joi.object({
             page: Joi.number().optional(),
-            size: Joi.number().optional(),
+            size: Joi.number().optional()
         });
         return joiFilter(schema, 'query');
     }
@@ -20,7 +20,7 @@ class Validator {
     validatePost() {
         const schema = Joi.object({
             name: Joi.string().required(),
-            permissions: Joi.array().items(Joi.string().regex(/^[0-9a-fA-F]{24}$/).message('Permission is not ObjectID pattern')).optional(),
+            permissions: Joi.array().items(Joi.string().regex(/^[0-9a-fA-F]{24}$/).message('Permission is not ObjectID pattern')).optional()
         });
         return joiFilter(schema, 'body');
     }
@@ -28,7 +28,7 @@ class Validator {
     validatePatch() {
         const schema = Joi.object({
             name: Joi.string().optional(),
-            permissions: Joi.array().items(Joi.string().regex(/^[0-9a-fA-F]{24}$/).message('Permission is not ObjectID pattern')).optional(),
+            permissions: Joi.array().items(Joi.string().regex(/^[0-9a-fA-F]{24}$/).message('Permission is not ObjectID pattern')).optional()
         });
         return joiFilter(schema, 'body');
     }

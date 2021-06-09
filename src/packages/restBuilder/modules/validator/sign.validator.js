@@ -1,5 +1,5 @@
-import { FilterSign } from '../../enum';
-import { BadRequestException } from '../../../httpException/BadRequestException';
+import {FilterSign} from '../../enum';
+import {BadRequestException} from '../../../httpException/BadRequestException';
 
 export class FilterSignValidator {
     validate(obj) {

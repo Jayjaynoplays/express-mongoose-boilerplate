@@ -1,6 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
-import { glob } from 'glob';
+import {glob} from 'glob';
 
 export class BaseContainer {
     pattern;

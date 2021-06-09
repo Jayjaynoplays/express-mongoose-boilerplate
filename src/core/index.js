@@ -1,10 +1,10 @@
 import 'dotenv/config';
 import './config/restBuilder';
 import express from 'express';
-import { ApiDocument } from './config/swagger';
-import { AppBundle } from './config';
-import { ModuleResolver } from './api';
-import { SecurityFilter } from '../packages/authModel/core/security/SecurityFilter';
+import {ApiDocument} from './config/swagger';
+import {AppBundle} from './config';
+import {ModuleResolver} from './api';
+import {SecurityFilter} from '../packages/authModel/core/security/SecurityFilter';
 
 const app = express();
 

@@ -1,6 +1,6 @@
-import { Module } from '../../../../packages/handler/Module';
-import { PermissionController } from '../controller/permission.controller';
-import { PermissionValidator } from '../../../modules/permission/validator/permission.validator';
+import {Module} from '../../../../packages/handler/Module';
+import {PermissionController} from '../controller/permission.controller';
+import {PermissionValidator} from '../../../modules/permission/validator/permission.validator';
 
 export const PermissionResolver = Module.builder()
     .addPrefix({
@@ -34,6 +34,6 @@ export const PermissionResolver = Module.builder()
             route: '/:id',
             method: 'delete',
             middlewares: [PermissionValidator.validateParam()],
-            controller: PermissionController.deleteOne,
+            controller: PermissionController.deleteOne
         }
     ]);

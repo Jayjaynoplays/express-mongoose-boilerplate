@@ -1,4 +1,4 @@
-import { logger } from '../../../../core/modules/logger/winston';
+import {logger} from '../../../../core/modules/logger/winston';
 
 export class SearchFactory {
     static logger = logger;
@@ -10,7 +10,7 @@ export class SearchFactory {
     }
 
     produce(req) {
-        const { search } = req;
+        const {search} = req;
         const schema = {};
 
         if (!search || search.length === 0) return null;

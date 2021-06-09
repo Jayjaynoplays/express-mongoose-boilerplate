@@ -1,5 +1,5 @@
-import { PORT } from '../env';
-import { SwaggerBuilder } from '../../packages/swagger';
+import {PORT} from '../env';
+import {SwaggerBuilder} from '../../packages/swagger';
 
 const options = {
     openapi: '3.0.1',
@@ -10,8 +10,8 @@ const options = {
         termsOfService: '',
         contact: {
             name: 'Backend S-group',
-            email: 'laptrinh-sgroup@gmail.com',
-        },
+            email: 'laptrinh-sgroup@gmail.com'
+        }
     },
     servers: [
         {
@@ -20,28 +20,28 @@ const options = {
             variables: {
                 env: {
                     default: 'app-dev',
-                    description: 'DEV Environment',
+                    description: 'DEV Environment'
                 },
                 port: {
                     enum: [
                         '8443',
                         '5000',
-                        '443',
+                        '443'
                     ],
-                    default: PORT,
+                    default: PORT
                 },
                 basePath: {
-                    default: 'api',
-                },
-            },
+                    default: 'api'
+                }
+            }
         },
         {
             url: 'https://app-dev.herokuapp.com/api',
-            description: 'DEV Env',
-        },
+            description: 'DEV Env'
+        }
     ],
     basePath: '/api',
-    auth: true,
+    auth: true
 };
 
 export const ApiDocument = SwaggerBuilder.builder().addConfig(options);

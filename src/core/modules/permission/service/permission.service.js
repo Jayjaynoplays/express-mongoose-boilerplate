@@ -1,25 +1,25 @@
-import { NotFoundException } from '../../../../packages/httpException';
-import { PermissionModel } from '../model/permissionModel';
+import {NotFoundException} from '../../../../packages/httpException';
+import {PermissionModel} from '../model/permissionModel';
 
 class Service {
-    findAll({ page = 1, size = 10 }) {
+    findAll({page = 1, size = 10}) {
         return PermissionModel.find()
             .limit(size)
             .skip((page - 1) * size)
             .exec();
     }
 
-    createOne({ name }) {
+    createOne({name}) {
         const permissionModel = new PermissionModel();
         permissionModel.name = name;
         return permissionModel.save();
     }
 
-    findOne({ id }) {
+    findOne({id}) {
         return PermissionModel.findById(id).exec();
     }
 
-    async patchOne({ id }, { name }) {
+    async patchOne({id}, {name}) {
         const permission = await PermissionModel.findById(id).exec();
         if (!permission) {
             throw new NotFoundException('Role not found');
@@ -28,7 +28,7 @@ class Service {
         return permission.save();
     }
 
-    deleteOne({ id }) {
+    deleteOne({id}) {
         return PermissionModel.findByIdAndDelete(id).exec();
     }
 }

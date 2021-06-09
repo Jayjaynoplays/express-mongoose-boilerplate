@@ -1,6 +1,6 @@
-import { Module } from '../../../../packages/handler/Module';
-import { RoleController } from '../controller/role.controller';
-import { RoleValidator } from '../../../modules/role/validator/role.validator';
+import {Module} from '../../../../packages/handler/Module';
+import {RoleController} from '../controller/role.controller';
+import {RoleValidator} from '../../../modules/role/validator/role.validator';
 
 export const RoleResolver = Module.builder()
     .addPrefix({
@@ -32,7 +32,7 @@ export const RoleResolver = Module.builder()
             method: 'patch',
             middlewares: [
                 RoleValidator.validateParam(),
-                RoleValidator.validatePatch(),
+                RoleValidator.validatePatch()
             ],
             controller: RoleController.patchOne
         },
@@ -40,6 +40,6 @@ export const RoleResolver = Module.builder()
             route: '/:id',
             method: 'delete',
             middlewares: [RoleValidator.validateParam()],
-            controller: RoleController.deleteOne,
+            controller: RoleController.deleteOne
         }
     ]);

@@ -1,5 +1,5 @@
-import { logger } from '../../../../core/modules/logger/winston';
-import { FilterValidator } from '../validator/filter.validator';
+import {logger} from '../../../../core/modules/logger/winston';
+import {FilterValidator} from '../validator/filter.validator';
 
 export class FilterFactory {
     static logger = logger;
@@ -15,7 +15,7 @@ export class FilterFactory {
     }
 
     transform(input) {
-        const { filter } = input;
+        const {filter} = input;
         let listFilter = [];
 
         if (!filter || filter.length === 0) return listFilter;

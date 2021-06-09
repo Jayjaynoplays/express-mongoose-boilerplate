@@ -1,5 +1,5 @@
-import { createLogger, transports, format } from 'winston';
-import { join } from 'path';
+import {createLogger, transports, format} from 'winston';
+import {join} from 'path';
 
 const {
     combine, timestamp,
@@ -18,7 +18,7 @@ const logger = createLogger({
             format: combine(
                 simple(), splat(),
                 timestamp({
-                    format: 'DD-MM-YYYY HH:mm:ss',
+                    format: 'DD-MM-YYYY HH:mm:ss'
                 }),
                 colorize(),
                 printf(log => {
@@ -31,9 +31,9 @@ const logger = createLogger({
         new transports.File({
             filename: join(process.cwd(), 'logs/errors.log'),
             level: 'error',
-            format: simple(),
+            format: simple()
         })
-    ],
+    ]
 });
 
-export { logger };
+export {logger};

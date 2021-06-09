@@ -1,7 +1,7 @@
-import { Module } from '../../../../packages/handler/Module';
-import { UserController } from '../controller/user.controller';
-import { UserValidator } from '../../../modules/user/validator/user.validator';
-import { ApiFilterSwagger } from '../../../common/swagger/filter';
+import {Module} from '../../../../packages/handler/Module';
+import {UserController} from '../controller/user.controller';
+import {UserValidator} from '../../../modules/user/validator/user.validator';
+import {ApiFilterSwagger} from '../../../common/swagger/filter';
 
 export const UserResolver = Module.builder()
     .addPrefix({
@@ -21,7 +21,7 @@ export const UserResolver = Module.builder()
             route: '/:id',
             method: 'get',
             middlewares: [UserValidator.validateParam()],
-            controller: UserController.findOne,
+            controller: UserController.findOne
         },
         {
             route: '/',
@@ -34,7 +34,7 @@ export const UserResolver = Module.builder()
             method: 'patch',
             middlewares: [
                 UserValidator.validateParam(),
-                UserValidator.validatePatch(),
+                UserValidator.validatePatch()
             ],
             controller: UserController.patchOne
         },
@@ -42,6 +42,6 @@ export const UserResolver = Module.builder()
             route: '/:id',
             method: 'delete',
             middlewares: [UserValidator.validateParam()],
-            controller: UserController.deleteOne,
+            controller: UserController.deleteOne
         }
     ]);

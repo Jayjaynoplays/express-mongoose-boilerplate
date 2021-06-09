@@ -1,4 +1,4 @@
-import { PermissionService } from '../../../modules/permission/service/permission.service';
+import {PermissionService} from '../../../modules/permission/service/permission.service';
 
 class Controller {
     constructor() {

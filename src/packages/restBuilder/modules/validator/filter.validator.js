@@ -1,5 +1,5 @@
-import { LengthValidator } from './length.validator';
-import { FilterSignValidator } from './sign.validator';
+import {LengthValidator} from './length.validator';
+import {FilterSignValidator} from './sign.validator';
 
 export class FilterValidator {
     listValidator = [];

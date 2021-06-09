@@ -1,6 +1,6 @@
-import { CONFLICT } from 'http-status';
-import { ERROR_CODE } from './error.enum';
-import { HttpException } from './HttpException';
+import {CONFLICT} from 'http-status';
+import {ERROR_CODE} from './error.enum';
+import {HttpException} from './HttpException';
 
 export class UniqueConstraintException extends HttpException {
     constructor(msg = 'Conflict references id') {

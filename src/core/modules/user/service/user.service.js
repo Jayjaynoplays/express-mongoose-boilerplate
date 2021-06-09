@@ -1,6 +1,6 @@
-import { NotFoundException } from '../../../../packages/httpException';
-import { UserModel } from '../model/userModel';
-import { BcryptService } from '../../auth/bcrypt';
+import {NotFoundException} from '../../../../packages/httpException';
+import {UserModel} from '../model/userModel';
+import {BcryptService} from '../../auth/bcrypt';
 
 class Service {
     constructor() {
@@ -14,7 +14,7 @@ class Service {
             .exec();
     }
 
-    createOne({ email, password, roles }) {
+    createOne({email, password, roles}) {
         const userModel = new UserModel();
         userModel.email = email;
         userModel.password = this.bcrypt.hash(password);
@@ -22,7 +22,7 @@ class Service {
         return userModel.save();
     }
 
-    async findOne({ id }) {
+    async findOne({id}) {
         const user = await UserModel.findById(id).exec();
         if (!user) {
             throw new NotFoundException('User not found');
@@ -30,7 +30,7 @@ class Service {
         return user;
     }
 
-    async patchOne({ id }, { email, password, roles }) {
+    async patchOne({id}, {email, password, roles}) {
         const user = await UserModel.findById(id).exec();
         if (!user) {
             throw new NotFoundException('User not found');
@@ -41,7 +41,7 @@ class Service {
         return user.save();
     }
 
-    async deleteOne({ id }) {
+    async deleteOne({id}) {
         const user = await UserModel.findByIdAndDelete(id).exec();
         if (!user) {
             throw new NotFoundException('User not found');

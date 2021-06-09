@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { joiFilter } from '../../../utils';
+import {joiFilter} from '../../../utils';
 
 class Validator {
     validateParam() {
@@ -12,21 +12,21 @@ class Validator {
     validateQuery() {
         const schema = Joi.object({
             page: Joi.number().optional(),
-            size: Joi.number().optional(),
+            size: Joi.number().optional()
         });
         return joiFilter(schema, 'query');
     }
 
     validatePost() {
         const schema = Joi.object({
-            name: Joi.string().required(),
+            name: Joi.string().required()
         });
         return joiFilter(schema, 'body');
     }
 
     validatePatch() {
         const schema = Joi.object({
-            name: Joi.string().optional(),
+            name: Joi.string().optional()
         });
         return joiFilter(schema, 'body');
     }

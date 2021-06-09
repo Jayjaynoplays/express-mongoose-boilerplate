@@ -1,4 +1,4 @@
-import { JwtAuthAdapter } from './JwtAuthAdapter';
+import {JwtAuthAdapter} from './JwtAuthAdapter';
 
 export class SecurityFilter {
     filter(req, res, next) {

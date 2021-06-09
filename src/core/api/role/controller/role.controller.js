@@ -1,4 +1,4 @@
-import { RoleService } from '../../../modules/role/service/role.service';
+import {RoleService} from '../../../modules/role/service/role.service';
 
 class Controller {
     constructor() {

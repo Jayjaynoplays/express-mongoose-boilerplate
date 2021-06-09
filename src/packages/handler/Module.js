@@ -1,11 +1,11 @@
 import express from 'express';
-import { OK, INTERNAL_SERVER_ERROR } from 'http-status';
-import { SwaggerContentCreator } from 'packages/swagger/core/content';
-import { logger } from '../../core/modules/logger/winston';
-import { ArgumentRequired } from './exceptions/ArgumentRequired';
-import { SwaggerContentDto } from '../swagger/model/SwaggerContentDto';
-import { HttpException } from '../httpException/HttpException';
-import { ERROR_CODE } from '../httpException/error.enum';
+import {OK, INTERNAL_SERVER_ERROR} from 'http-status';
+import {SwaggerContentCreator} from 'packages/swagger/core/content';
+import {logger} from '../../core/modules/logger/winston';
+import {ArgumentRequired} from './exceptions/ArgumentRequired';
+import {SwaggerContentDto} from '../swagger/model/SwaggerContentDto';
+import {HttpException} from '../httpException/HttpException';
+import {ERROR_CODE} from '../httpException/error.enum';
 
 export class Module {
     static logger = logger;
@@ -50,7 +50,7 @@ export class Module {
             const data = await controller(request);
             return response.status(OK).json({
                 status: OK,
-                data,
+                data
             });
         } catch (err) {
             if (err instanceof HttpException) {
@@ -95,7 +95,7 @@ export class Module {
         );
     }
 
-    addPrefix({ prefixPath = '/', tag, module }) {
+    addPrefix({prefixPath = '/', tag, module}) {
         if (!module) {
             throw new ArgumentRequired('module', 'addPrefix function');
         }
@@ -132,7 +132,7 @@ export class Module {
                  * @requires remove it whenever we finish
                  */
                 // eslint-disable-next-line no-unused-vars
-                route, controller, method, middlewares = [], preAuthorization
+                route, controller, method, middlewares = []
             } = api;
             this.#router[method](route, ...middlewares, this.#createHandler(controller));
 

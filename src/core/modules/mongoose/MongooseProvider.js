@@ -1,4 +1,4 @@
-import { logger } from '../logger/winston';
+import {logger} from '../logger/winston';
 
 export class MongooseProvider {
     #count = 3;

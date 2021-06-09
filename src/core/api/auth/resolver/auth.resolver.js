@@ -1,6 +1,6 @@
-import { Module } from '../../../../packages/handler/Module';
-import { AuthController } from '../controller/auth.controller';
-import { UserValidator } from '../../../modules/user/validator/user.validator';
+import {Module} from '../../../../packages/handler/Module';
+import {AuthController} from '../controller/auth.controller';
+import {UserValidator} from '../../../modules/user/validator/user.validator';
 
 export const AuthResolver = Module.builder()
     .addPrefix({

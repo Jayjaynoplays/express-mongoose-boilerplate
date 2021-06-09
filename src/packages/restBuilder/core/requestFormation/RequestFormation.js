@@ -1,8 +1,8 @@
-import { LockValidator } from '../../modules/validator/lock.validator';
-import { PaginationFactory } from '../../modules/factory/pagination.factory';
-import { SortFactory } from '../../modules/factory/sort.factory';
-import { FilterFactory } from '../../modules/factory/filter.factory';
-import { SearchFactory } from '../../modules/factory/search.factory';
+import {LockValidator} from '../../modules/validator/lock.validator';
+import {PaginationFactory} from '../../modules/factory/pagination.factory';
+import {SortFactory} from '../../modules/factory/sort.factory';
+import {FilterFactory} from '../../modules/factory/filter.factory';
+import {SearchFactory} from '../../modules/factory/search.factory';
 /**
  * @notes This class consists of factory which will produce the final format
  {

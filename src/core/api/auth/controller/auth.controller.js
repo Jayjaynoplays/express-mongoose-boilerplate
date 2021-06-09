@@ -1,5 +1,5 @@
-import { AuthService } from '../../../modules/auth/service/auth.service';
-import { LoginDto } from '../../../modules/auth/dto/index';
+import {AuthService} from '../../../modules/auth/service/auth.service';
+import {LoginDto} from '../../../modules/auth/dto/index';
 
 class Controller {
     constructor() {

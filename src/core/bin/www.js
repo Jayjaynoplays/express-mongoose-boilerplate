@@ -8,8 +8,8 @@
 import debug from 'debug';
 import http from 'http';
 import app from '../index';
-import { PORT } from '../env';
-import { logger } from '../modules/logger/winston';
+import {PORT} from '../env';
+import {logger} from '../modules/logger/winston';
 
 const debugHelper = debug('mongoose:server');
 
@@ -61,16 +61,16 @@ function onError(error) {
 
     // handle specific listen errors with friendly messages
     switch (error.code) {
-    case 'EACCES':
-        console.error(`${bind} requires elevated privileges`);
-        process.exit(1);
-        break;
-    case 'EADDRINUSE':
-        console.error(`${bind} is already in use`);
-        process.exit(1);
-        break;
-    default:
-        throw error;
+        case 'EACCES':
+            console.error(`${bind} requires elevated privileges`);
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(`${bind} is already in use`);
+            process.exit(1);
+            break;
+        default:
+            throw error;
     }
 }
 

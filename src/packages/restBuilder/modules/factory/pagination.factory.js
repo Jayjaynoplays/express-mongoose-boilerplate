@@ -1,5 +1,5 @@
-import { logger } from '../../../../core/modules/logger/winston';
-import { BadRequestException } from '../../../httpException/BadRequestException';
+import {logger} from '../../../../core/modules/logger/winston';
+import {BadRequestException} from '../../../httpException/BadRequestException';
 
 export class PaginationFactory {
     static logger = logger;
